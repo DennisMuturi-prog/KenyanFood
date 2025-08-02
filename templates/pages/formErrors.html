@@ -1,0 +1,8 @@
+{% for err in error_messages %}
+<div id="{{ err.field }}">
+    {% for error_message in err.form_error_messages %}
+    <p style="color:red">{{error_message}}</p>
+        
+    {% endfor %}
+</div>
+{% endfor %}

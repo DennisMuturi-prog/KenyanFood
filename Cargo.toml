@@ -1,0 +1,16 @@
+[package]
+name = "kenyan_food"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio ={ version = "1.47.1", features = ["full"]}
+axum ={ version = "0.8.4", features = ["macros"]}
+askama ={ version = "0.14.0"}
+tower-http ={ version = "0.6.6", features = ["fs"]}
+serde = {version = "1.0.219", features = ["derive"]}
+validator = { version = "0.19", features = ["derive"] }
+regex = "1.11.1"
+sqlx = {version = "0.8.6", features = [ "runtime-tokio", "tls-rustls", "postgres", "macros"]}
+thiserror = "2.0.12"
+argon2 = "0.5.3"
