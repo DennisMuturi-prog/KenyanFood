@@ -1,0 +1,18 @@
+{% for recipe in recipes %}
+<div class="card bg-base-100 w-96 shadow-sm">
+
+    <figure>
+        <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">{{recipe.recipe_name}}</h2>
+        <p>{{recipe.about}} </p>
+        <div class="card-actions justify-end">
+            <div class="card-actions justify-end">
+                <a href="/recipe/{{recipe.id}}" class="btn btn-primary">view</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endfor %}

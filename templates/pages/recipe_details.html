@@ -1,0 +1,78 @@
+{% extends "index.html" %}
+
+{% block main %}
+{% include "partials/toast.html" %}
+<div class="card bg-base-100 w-full max-w-4xl mx-auto shadow-sm"> <!-- Added max-width and centering -->
+    <figure class="max-h-64 overflow-hidden">
+        <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">{{recipe.recipe_name}}</h2>
+        <p class="max-w-prose">{{recipe.about}}</p> <!-- Added max-width for better readability -->
+        
+        <h2 class="card-title">Ingredients</h2>
+        <ul class="list bg-base-100 rounded-box shadow-md max-w-2xl"> <!-- Limited width for ingredients -->
+            {% for ingredient in recipe.parsed_ingredients_array %}
+            <li class="p-4 pb-2 tracking-wide">{{ingredient}}</li>
+            {% endfor %}
+        </ul>
+        
+        <h2 class="card-title">Preparation</h2>
+        <ul class="list bg-base-100 rounded-box shadow-md max-w-2xl"> <!-- Limited width for ingredients -->
+            {% for step in recipe.preparation_steps %}
+            <li class="p-4 pb-2 tracking-wide">{{step}}</li>
+            {% endfor %}
+        </ul>
+        
+        <h2 class="card-title">Nutritional Information</h2>
+        <div class="bg-base-200 rounded-lg p-4 mb-4 max-w-3xl"> <!-- Limited width for nutrition table -->
+            <h3 class="text-sm font-semibold mb-2 opacity-70">{{recipe.nutrition_per_100g_of_recipe}}</h3>
+
+            <div class="overflow-x-auto">
+                <table class="table table-compact w-full">
+                    <tbody>
+                        <tr>
+                            <td class="font-medium">Energy</td>
+                            <td>{{recipe.energy_kcal}} kcal</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Fat</td>
+                            <td>{{recipe.fat_g}} g</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Carbohydrates</td>
+                            <td>{{recipe.carbohydrates_g}} g</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Protein</td>
+                            <td>{{recipe.proteins_g}} g</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Fiber</td>
+                            <td>{{recipe.fibre_g}} g</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Vitamin A</td>
+                            <td>{{recipe.vitamin_a_mcg}} mcg</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Iron</td>
+                            <td>{{recipe.iron_mg}} mg</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Zinc</td>
+                            <td>{{recipe.zinc_mg}} mg</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card-actions justify-end">
+            <form action="/recipe/{{recipe.id}}" method="post"><button class="btn btn-primary">view</button></form>
+            <form action="/recipe/{{recipe.id}}" method="post"><button class="btn btn-primary">like</button></form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -4,24 +4,26 @@
 <head>
     <meta charset="utf-8">
     <title>Home</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
-    <link rel="stylesheet" href="/static/app.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- <link rel="stylesheet" href="/static/app.css"/> -->
     <script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@main/bundles/datastar.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
     <header>
         <div role="tablist" class="tabs tabs-border"
-        data-signals-currentpath="window.location.pathname">
-            <a role="tab" class="tab" data-class-tab-active="$currentpath=='/'" href="/">home</a>
-            <a role="tab" class="tab" data-class-tab-active="$currentpath=='/login'" href="/login">login</a>
-            <a role="tab" class="tab" data-class-tab-active="$currentpath=='/signup'" href="/signup">sign up</a>
-        </div>
-    </header>
-    <main>
-        {% block main %}{% endblock %}
-    </main>
+        data-signals-_currentpath="window.location.pathname">
+        <a role="tab" class="tab" data-class-tab-active="$_currentpath=='/'" href="/">home</a>
+        <a role="tab" class="tab" data-class-tab-active="$_currentpath=='/login'" href="/login">login</a>
+        <a role="tab" class="tab" data-class-tab-active="$_currentpath=='/signup'" href="/signup">sign up</a>
+    </div>
+</header>
+<main>
+    {% block main %}{% endblock %}
+</main>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </body>
 

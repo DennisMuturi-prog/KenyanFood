@@ -1,6 +1,40 @@
 {% extends "index.html" %}
 
 {% block main %}
-<h1>home</h1>
-    
+{% include "partials/toast.html" %}
+<label class="input">
+    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+        </g>
+    </svg>
+    <input type="search" class="grow" placeholder="Search" data-bind-search_term
+        data-on-input__debounce.200ms="@get('/search')" />
+</label>
+
+<h1>Welcome {{email}}</h1>
+<div id="recipes" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 justify-items-center"
+    data-signals-cursor="{{last_recipe_id}}">
+    {% for recipe in recipes %}
+    <div class="card bg-base-100 w-96 shadow-sm">
+
+        <figure>
+            <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}" />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">{{recipe.recipe_name}}</h2>
+            <p>{{recipe.about}} </p>
+            <div class="card-actions justify-end">
+                <div class="card-actions justify-end">
+                    <a href="/recipe/{{recipe.id}}" class="btn btn-primary">view</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+<span id="pagination" class="loading loading-spinner text-primary" data-on-intersect="@get('/infinite_scroll')"></span>
+
 {% endblock %}

@@ -1,0 +1,38 @@
+<script>
+    function showSuccessToast(message) {
+        Toastify({
+            text: message || "Success!",
+            duration: 3000,
+            style: {
+                background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+            },
+        }).showToast();
+    }
+
+    function showErrorToast(message) {
+        Toastify({
+            text: message || "An error occurred!",
+            duration: 3000,
+            
+            style: {
+                background: "linear-gradient(to right, #f44336, #d32f2f)",
+                color: "#ffffff",
+            },
+        }).showToast();
+    }
+
+    function showWarningToast(message) {
+        Toastify({
+            text: message || "Warning!",
+            duration: 3000,
+            style: {
+                background: "linear-gradient(to right, #f59e0b, #d97706)",
+                color: "#ffffff",
+            },
+        }).showToast();
+    }
+</script>
+<div
+data-signals-message="''" 
+data-on-signal-patch="showErrorToast(patch.message)"
+data-on-signal-patch-filter="{include: /^message$/}"></div>
